@@ -1,0 +1,18 @@
+# 参与贡献
+
+1. 先创建分支，再提交小而明确的改动。
+2. Shell 修改必须通过 `bash -n`，并尽量通过 `shellcheck`；功能修改应补充自动化测试。
+3. 不提交真实 UUID、密码、私钥、订阅令牌、服务器 IP 或运行状态文件。
+4. 保持协议模块独立；配置写入必须经过 `apply_inbound`，并由 sing-box `check` 验证。
+5. 提交说明应包含变更原因、测试环境、测试命令和结果。
+6. 开发过程中的临时报告不要提交进仓库（需要留存的写进 PR 描述或 Issue）。
+
+## 本地测试
+
+```bash
+bash tests/run_all.sh        # 全部测试（需要 jq、python3、python3-yaml）
+bash tests/smoke.sh          # 快速冒烟
+bash tests/ui_clean_test.sh  # 单个测试
+```
+
+涉及界面的改动请同时在默认样式（`clean`）和 `SBX_STYLE=boxed` 下检查；旧版 UI 测试会自行固定为 `boxed`。

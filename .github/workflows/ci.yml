@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      # actions/checkout@v4，固定 commit SHA（2026-11-22 查询）
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: bash -n
+        run: find . -name '*.sh' -print0 | xargs -0 -n1 bash -n
+      - name: shellcheck（先只拦 error，清完告警后再改为 warning）
+        run: |
+          shellcheck -S error -x -e SC1090,SC1091 \
+            $(git ls-files '*.sh')
+
+  test:
+    needs: lint
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      # actions/checkout@v4，固定 commit SHA（2026-11-22 查询）
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Install test dependencies
+        run: sudo apt-get update && sudo apt-get install -y jq python3 python3-yaml
+      - name: Run all tests
+        run: bash tests/run_all.sh

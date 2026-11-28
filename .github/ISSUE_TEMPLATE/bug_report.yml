@@ -1,0 +1,30 @@
+name: Bug 反馈
+description: 报告脚本的问题
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **请勿粘贴订阅令牌、UUID、密码、Reality 私钥或完整配置文件。**
+  - type: input
+    id: version
+    attributes:
+      label: sbx 版本（`sbx version`）
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: 系统与架构（发行版 / x86_64 或 arm64）
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: "`sbx doctor` 输出与 `journalctl -u sing-box -n 50 --no-pager`（请先打码）"

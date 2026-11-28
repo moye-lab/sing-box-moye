@@ -1,0 +1,20 @@
+  SING-BOX MOYE v1.9.0                                            US-vps01
+  ● 运行中 v1.12.0 · PID 100606 · 6.6MB
+  203.0.113.9 · AS64500 · US·LAX
+  网络 ● BBR + FQ   WARP ● 已连接   拦截 ○ 已关闭   订阅 ○ 未启用
+
+  协议                                                        按字母键直达
+  r  VLESS-Reality    ● TCP · 443 · www.microsoft.com
+  h  Hysteria 2       ● UDP · 8443 · Hop 10000-20000
+  t  TUIC v5          ○ 未安装
+  a  AnyTLS           ○ 未安装
+  p  Cloudflare Argo  ○ 未安装
+  y  SOCKS5           ○ 未安装
+  i  一键全装         Reality·Hy2·TUIC·AnyTLS
+
+  管理
+  e 节点订阅       n 节点命名       o 网络调优
+  w WARP 分流      c 回国拦截       s 内核维护
+  d 环境诊断       x 彻底卸载       q 退出
+
+ CLI: sbx <reality|hy2|tuic|anytls|argo|socks5|warp|all|export|doctor>
